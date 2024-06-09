@@ -159,7 +159,7 @@
     <div class="content">
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: transparent;">
             <!-- <a class="navbar-brand" href="index.html"><img src="imgs/bullion2.png" width="150px"></a> -->
-            <h1 style="text-align: right;">Welcome, <span class="navbar-text user-name profilename"></span></h1>
+            <h1 style="text-align: right;">Welcome, <div id="account_name" class="navbar-text user-name profilename"></div></h1>
         </nav>
 
         <div class="row mt-4">
@@ -208,7 +208,7 @@
                         <h5>Account Balance</h5>
                     </div>
                     <div class="card-body" style="height: 250px;">
-                        <h1 style="font-size: 60px;">$0.00</h1>
+                        <h1 id="account_balance" style="font-size: 60px;">$0.00</h1>
                         <a href="deposit.html"><button class="btn btn-custom mt-2">Deposit</button></a>
                         <a href="withdraw.html"><button class="btn btn-custom mt-2">Withdraw</button></a>
                     </div>
@@ -436,5 +436,13 @@
     </script>
     <script src="script.js"></script>
     <script src="https://kit.fontawesome.com/a7cbe35a69.js" crossorigin="anonymous"></script>
+    <script async>
+          const user = localStorage.getItem("user");
+let userData = user ? JSON.parse(user) : null;
+if(userData) {
+        document.getElementById('account_balance').innerHTML = `<p>$${userData.balance.toLocaleString()}</p>`;
+        document.getElementById('account_name').innerHTML = `<p>${userData.fullname}</p>`;
+}
+    </script>
 </body>
 </html>
