@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit - BullionFX</title>
+    <link rel="stylesheet" href="deposit.css">
+    <link rel="shortcut icon" href="imgs/bullion.ico" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/a7cbe35a69.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+</head>
+<body>
+<form id="paymentForm" action="confirm2.html" method="get" onsubmit="return handleFormSubmission()">
+    <h2 style="text-align: center;">Withdraw</h2>
+    <span>Enter Withdrawal Fee</span>
+    <br><br>
+    <input type="number" id="amountInput" placeholder="Enter Amount in ($)" required class="amount">
+    <br>
+    <br><br>
+    <div class="choose">
+        Choose Payment Method
+        <br><br>
+        <div class="btc">
+            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="" width="20px"> Bitcoin <input type="radio" name="paymentMethod" value="Bitcoin">
+        </div>
+        <br>
+        <div class="eth">
+            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png" alt="" width="20px"> Ethereum <input type="radio" name="paymentMethod" value="Ethereum">
+        </div>
+        <br>
+        <div class="usdt">
+            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/825.png" alt="" width="20px"> USDT <input type="radio" name="paymentMethod" value="USDT">
+        </div>
+    </div>
+    <br><br>
+    <button type="submit">Proceed to Payment</button>
+</form>
+
+<script>
+    function handleFormSubmission() {
+        var amount = document.getElementById("amountInput").value;
+        var paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+        localStorage.setItem("depositAmount", amount);
+        localStorage.setItem("paymentMethod", paymentMethod);
+        return true;
+    }
+</script>
+
+</body>
+</html>

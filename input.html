@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Wallet Address</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url(imgs/Bullion\ FX.png);
+            background-size: cover;
+        }
+        .input-container {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #2563eb;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="input-container">
+    <h2 class="text-center">Input Withdrawal Address</h2>
+    <p class="text-center text-warning">Please ensure you enter the correct wallet address. You only need to fill one of the fields.</p>
+    <form id="addressForm">
+        <div class="form-group">
+            <label for="btcAddress">BTC Address:</label>
+            <input type="text" class="form-control" id="btcAddress" placeholder="Enter BTC address">
+        </div>
+        <div class="form-group">
+            <label for="ethAddress">ETH Address:</label>
+            <input type="text" class="form-control" id="ethAddress" placeholder="Enter ETH address">
+        </div>
+        <div class="form-group">
+            <label for="usdtAddress">USDT Address:</label>
+            <input type="text" class="form-control" id="usdtAddress" placeholder="Enter USDT address">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('addressForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var btcAddress = document.getElementById('btcAddress').value.trim();
+        var ethAddress = document.getElementById('ethAddress').value.trim();
+        var usdtAddress = document.getElementById('usdtAddress').value.trim();
+        
+        if (!btcAddress && !ethAddress && !usdtAddress) {
+            alert('Please enter at least one wallet address.');
+            return;
+        }
+
+        alert('Your withdrawal request has been received. You will be paid within 10-12 hours.');
+        window.location.href = 'customerconfirm.html';
+    });
+</script>
+
+</body>
+</html>

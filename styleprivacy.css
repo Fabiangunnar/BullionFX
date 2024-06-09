@@ -1,0 +1,83 @@
+body{
+    font-family:"Jost", Tahoma, sans-serif;
+}
+nav{
+    background-color: #111827;
+    padding: 20px;
+    padding-left: 90px;
+    width: auto;
+    padding-bottom: 19px;
+    padding-right: 70px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 999;
+}
+nav img{
+    float: left;
+}
+nav .headlinks a{
+    text-decoration: none;
+    color: white;
+}
+.headlinks{
+    margin-left: 30px;
+    margin-top: 17px;
+    float: left;
+}
+.buttonlog{
+   float: right;
+   box-sizing: border-box;
+   margin-top: 17px;
+}
+.login{
+    border-radius: 4px;
+    padding-top: 7PX;
+    padding-bottom: 7PX;
+    padding-left: 15PX;
+    padding-right: 15PX;
+    background-color: transparent;
+    color: white;
+    font-size: 16px;
+    font-weight: normal;
+    border: 2px solid white;
+}
+.signup, .login:hover{
+    background-color: #4073EC;
+    cursor: pointer;
+    border: 2px solid #4073EC;
+
+}
+.signup{
+    border-radius: 4px;
+    padding-top: 7PX;
+    padding-bottom: 7PX;
+    padding-left: 15PX;
+    padding-right: 15PX;
+    background-color: #4073EC;
+    color: white;
+    font-size: 16px;
+    font-weight: normal;
+    border: 2px solid #4073EC;
+}
+.container{
+   background-image:url(imgs/WhatsApp\ Image\ 2024-03-09\ at\ 17.41.41_2d3adeac.jpg); 
+   opacity: 0.9;
+   background-size: cover;
+   height: 100%;
+   padding: 150px;
+   color:wheat;
+   text-shadow: 3px 3px 3px black;
+   font-size: 1.5rem;
+}
+.listeditem{
+    text-decoration: underline;
+    font-weight: bold;
+}
+li{
+    list-style-type: none;
+}
+h1{
+    margin-left: -50px;
+}

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - BullionFX</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="imgs/bullion.ico" type="image/x-icon">
+    <script src="javascript.js"></script>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+        .popup {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #ffffff;
+            color: #000000;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 14px;
+            width: 300px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0;
+    transform: translateX(-100%);
+    animation: slideInOut 8s ease-in-out infinite;
+
+        }
+    
+        @keyframes slideInOut {
+    0%, 100% { 
+        opacity: 0; 
+        transform: translateX(-100%); 
+    }
+    10%, 90% { 
+        opacity: 1; 
+        transform: translateX(0); 
+    }
+}
+.featured-on {
+            text-align: center;
+        }
+        .logo-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .logo-container img {
+            max-width: 100px;
+            margin: 10px;
+        }
+        @media (max-width: 600px) {
+            .logo-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .logo-row {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+            }
+            .logo-row img {
+                flex: 1;
+                max-width: 100px;
+                margin: 10px;
+            }
+        }
+
+        .popup img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .popup-text {
+            flex: 1;
+        }
+
+        .popup-close {
+            cursor: pointer;
+            font-size: 18px;
+            line-height: 18px;
+            color: #999;
+        }
+
+        .popup-close:hover {
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <img src="imgs/bullion2.png" alt="" width="150px">
+    <div class="headlinks">
+        <a href="index.html">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="about.html">About Us</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="dropdown">
+            <button class="dropbtn">Services <i class="fa fa-caret-down"></i></button>
+            <div class="dropdowncontent">
+                <a href="forex.html">Forex</a>
+                <a href="crypto.html">Cryptocurrency</a>
+                <a href="stocks.html">Stocks</a>
+                <a href="gold.html">Gold</a>
+            </div>
+        </div>
+        <a href="investment.html">Investment Plans</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="contact.html">Contact</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+    
+    <div class="buttonlog">
+        <a href="login.html"><button class="login">Login</button></a> 
+         <a href="signin.html"><button class="signup">Sign Up</button></a>
+     </div>
+
+     <div id="myNav" class="overlay">
+
+        <!-- Button to close the overlay navigation -->
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      
+        <!-- Overlay content -->
+        <div class="overlay-content">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="investment.html">Investment Plans</a>
+            <a href="contact.html">Contact</a>
+            <button class="dropdown-btn2">Services
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-container2">
+                <a href="forex.html">Forex</a>
+                <a href="crypto.html">Cryptocurrency</a>
+                <a href="stocks.html">Stocks</a>
+                <a href="gold.html">Gold</a>
+              </div>
+              <a href="login.html">Login</a>
+              <a href="signin.html">Sign Up</a>
+            <script>//* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+                var dropdown = document.getElementsByClassName("dropdown-btn2");
+                var i;
+                
+                for (i = 0; i < dropdown.length; i++) {
+                  dropdown[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var dropdownContent = this.nextElementSibling;
+                    if (dropdownContent.style.display === "block") {
+                      dropdownContent.style.display = "none";
+                    } else {
+                      dropdownContent.style.display = "block";
+                    }
+                  });
+                }
+                </script>
+              
+        </div>
+      
+      </div>
+      
+      <!-- Use any element to open/show the overlay navigation menu -->
+      <span onclick="openNav()" class="none"><i class="fa fa-bars" style="color: white;"></i></span>
+      <script>
+        function openNav() {
+document.getElementById("myNav").style.width = "100%";
+}
+
+/* Close when someone clicks on the "x" symbol inside the overlay */
+function closeNav() {
+document.getElementById("myNav").style.width = "0%";
+}
+      </script>
+</nav>
+<br>
+<div class="videoback">
+    <video src="imgs/homebak.mp4" autoplay muted loop></video>
+    <div class="videobacktext">
+        <h1>Join The Global Leaders of Financial Investment</h1>
+        <span>Comprehensive financial advice and investment services that are tailored to meet your individual needs.</span>
+        <br><br><br>
+       <a href="signin.html"> <button class="create">Create an Account</button></a>
+    </div>
+</div>
+   
+<div class="featured-on">
+    <h2>Featured on</h2>
+    <div class="logo-container">
+        <img src="imgs/forbes.png" alt="Forbes">
+        <img src="imgs/cnbc.png" alt="CNBC">
+        <img src="imgs/theguardian.png" alt="The Guardian">
+        <img src="imgs/bloomberg.png" alt="Bloomberg">
+        <img src="imgs/reuters.png" alt="Reuters">
+        <img src="imgs/marketwatch.png" alt="MarketWatch">
+    </div>
+</div> 
+    <div class="become">
+        <div class="becomespan">
+            <img src="imgs/addperson.png" alt="">
+            <span>Become A Member</span>
+            <p>Become a member of BullionFX by creating a free account.</p>
+        </div>
+        <div class="becomespan">
+            <img src="imgs/earn.png" alt="">
+            <span>Choose Your Plan</span>
+            <p>Select any of our unique financial earning plans that best works for you.</p>
+        </div>
+        <div class="becomespan">
+            <img src="imgs/dollar.png" alt="">
+            <span>Earn Passively</span>
+            <p>Earn passively and get paid immediately you request for a withdrawal.</p>
+        </div>
+    </div>
+    <br><br><br><br><br>
+    <div class="join">
+
+        <div class="join2">
+            <h2 style="font-size: 13.5px; letter-spacing: 2px; text-transform: uppercase; font-weight: 200;">Join Us</h2>
+            <h2 style="font-size: 37.5px; font-weight: bolder;">Partner With An Experienced Alternative Investment Team</h2>
+            <h1>_______</h1>
+        </div>
+        <div class="join3">
+
+
+            <div class="nocost">
+               <div class="imgcont">
+                <img src="imgs/nocost.jpg" alt="" width="100%">
+                <h3>Join us, at no cost to you</h3>
+                <p>Our advisor-centric team of 20+ professionals supports you through every step of your journey. We service 100+ independent financial advisory firms who represent over £4billion in assets collectively. We invest alongside our clients, creating a direct alignment of interest</p>
+               </div>
+            </div>
+            <div class="nocost2">
+                <div class="imgcont">
+                 <img src="imgs/investing.jpg" alt="" width="100%">
+                 <h3>Investing</h3>
+                 <p>
+                    We use serious and highly analyzed strategy and results to pursue steady, reliable returns. Integrated tightly with your financial planning specialists is our extremely high powered, intellectually voracious investment operation. Our team works tirelessly to develop sophisticated strategies on your behalf. Lucky for you, you won’t see all of this first-hand unless you're interested in it. Instead, your over-arching investment experience with us should feel calm, secure and successful. Here's what else you can expect: A long-term, value-orientated approach Risk management, not risk minimisation Aggregated investing power Heavy analytical firepower.
+                 </p>
+                </div>
+             </div>
+             <div class="nocost3">
+                <div class="imgcont">
+                 <img src="imgs/intelligent.jpg" alt="" width="100%">
+                 <h3>Build Intelligent Portfolios for Your Investments</h3>
+                 <p>
+                    Our cloud-based proprietary quantitative analytics, portfolio optimization technology, and qualitative research are designed to help you build intelligent, institutional-quality private equity and hedge fund portfolios.
+                 </p>
+                </div>
+             </div>
+             <div class="nocost4">
+                <div class="imgcont">
+                 <img src="imgs/wealthman.jpg" alt="" width="100%">
+                 <h3>Wealth Management</h3>
+                 <p>
+                    Imagine having the freedom to focus on the things that give you energy. Wealth advice with a disciplined, evidence-based approach is hard to come by. Fortunately, you've found your way here. In just a few minutes, discover how to create a more secure financial future.
+                 </p>
+                </div>
+             </div>
+        </div>
+    </div>
+    <div class="whychoose">
+        <div class="whychoosetext">
+            <span style="letter-spacing: 1.5px; text-transform: uppercase; font-size: 13.5px;">WHY CHOOSE US</span>
+            <h2 style="font-size: 24.5px;">Portfolio Management Tools</h2>
+            <p style=" margin: auto; font-size: 15px;">Benefit from our proprietary portfolio management tools that include alternative investment analytics, portfolio optimization technology and rebalancing software designed to help you service your portfolios and grow your investment.</p>
+        </div>
+        <div class="reasonschoose">
+            <div class="pot">
+                <img src="imgs/pot.png" alt="" width="100px">
+                <h2 style="font-size: 19.5px;">POT (portfolio optimization technology)</h2>
+                <p>Have a diversified investment funds portfolio proposals using our proprietary portfolio optimization tools. Portfolios may be customized to meet your desired’ 
+                    unique investment objectives, allocate to specific sectors or strategies, and/or complement existing investments.</p>
+            </div>
+            <div class="pot">
+                <img src="imgs/pct.png" alt="" width="100px">
+                <h2 style="font-size: 19.5px;">PCT (portfolio construction technology)</h2>
+                <p>Our proprietary automated software technology allows you to select from a 
+                    diverse list of rigorously-vetted institutional investment fund exposures across various strategies, 
+                    add them to your cart, and within seconds generate an web-based portfolio investment plan for your account earnings</p>
+            </div>
+            <div class="pot">
+                <img src="imgs/padlock.png" alt="" width="100px">
+                <h2 style="font-size: 19.5px;">Ongoing portfolio monitoring and rebalancing tools</h2>
+                <p>Our portfolio rebalancing and liquidity management tools make it 
+                    easy to rebalance portfolios, manage upcoming investment requirements, and track private team building growth.</p>
+            </div>
+            <div class="potright">
+                <img src="imgs/qia.png" alt="" width="100px">
+                <h2 style="font-size: 19.5px;">QIA (Quantitative Investment Analytics)</h2>
+                <p>Client-facing deliverables: QIA helps investors understand the investments. 
+                    Take a deep dive using our proprietary analytics specifically designed for alternative investing. We also deliver top-quality client-facing materials such as interactive proposals, 
+                    manager/fund profiles, industry news, account statements, audits, and consolidated K-1s.</p>
+            </div>
+        </div>
+    </div>
+    <div class="counting">
+        <div class="dailytrades">
+            <span style="font-size: 37.5px; font-weight: bold;" id="counter">0</span><span style="font-size: 37.5px; font-weight: bold;">+</span><br>
+            Daily Trades
+        </div>
+        <div class="dailytrades">
+            <span style="font-size: 37.5px; font-weight: bold;" class="counter2">450,000</span><span style="font-size: 37.5px; font-weight: bold;">+</span><br>
+            Clients
+        </div>
+        <div class="dailytrades">
+            <span style="font-size: 37.5px; font-weight: bold;">2</span><span style="font-size: 37.5px; font-weight: bold;"> billion +</span><br>
+            USD daily trade volume
+        </div>
+        <div class="dailytradesright">
+            <span style="font-size: 37.5px; font-weight: bold;">5</span><span style="font-size: 37.5px; font-weight: bold;"> billion +</span><br>
+            USD assets under management
+        </div>
+    </div>
+
+
+    <div class="switch">
+        <div class="switchtext"></div>
+        <h2 style="text-align: center; font-size: 37.5px;">Switch To BullionFX</h2>
+        <p style="text-align: center; font-size: 16px;">At BullionFX we work hard to enhance your trading experience <br> As a global, 
+            5 star rated broker, our client’s satisfaction is in the center of our focus.</p>
+    </div>
+    <div class="switchreasonscont">
+<br><br>
+            <div class="instruments">
+                <img src="imgs/assets.png" alt="" width="70px">
+                <h2>2100+ Instruments</h2>
+                <span>Wide range of global markets, including Forex, Indices, Commodities, ETFs and more.</span>
+            </div>
+            <div class="instruments">
+                <img src="imgs/safe.png" alt="" width="60px">
+                <h2>Safe & Secure</h2>
+                <span>BullionFX is regulated by the world's biggest supervision authorities, including the Financial Conduct Authority.</span>
+            </div>
+            <div class="instruments">
+                <img src="imgs/edu.png" alt="" width="70px">
+                <h2>Comprehensive Education</h2>
+                <span>Make use of our extensive video <br> library and get to know more about trading.</span>
+            </div>
+            <div class="instruments2">
+                <img src="imgs/support.png" alt="" width="70px">
+                <h2>Fast & highly qualified support</h2>
+                <span>Our multilingual customer support team is ready to help you - 24h hours a day.</span>
+            </div>
+            <div class="instruments3">
+                <img src="imgs/customers.png" alt="" width="70px">
+                <h2>450,000+ customers</h2>
+                <span>With years of activity in the financial markets, BullionFX has gained thousands of customers.</span>
+            </div>
+            <div class="instruments3">
+                <img src="imgs/innovative.png" alt="" width="70px">
+                <h2>Innovative Platform</h2>
+                <span>We're constantly improving our trading platform to make it the best on the market.</span>
+            </div>
+    </div>
+<br><br><br>
+    <div class="needhelp">
+        <h2 style="font-size: 34.2px;">Need Help?</h2>
+        <span style="font-size: 20.52px;">Don't Hesitate to contact us</span>
+        <h2 style="font-weight: bolder;">_______</h2>
+        <br>
+       <a href="contact.html"><button class="contactus">Contact Us</button></a>
+    </div>
+    <div class="testimonials">
+        T E S T I M O N I A L
+
+        <h2 style="font-size: 37.5px;">WHAT ARE PEOPLE SAYING?</h2>
+
+        <div class="datacontainer">
+            <div class="data box">
+                <img src="imgs/blank.jpg" alt="" width="160px">
+                <h3>Dele Orozco</h3>
+                <p>
+                    BullionFX runs a quick and reliable system. It feels great to know that I can always trust their support system to come through for me.
+                    Their response speed is prompt and the delivery precise to the last detail.
+                </p>
+            </div>
+            <div class="access box">
+                <img src="imgs/pure.jpg" alt="" width="160px">
+                <h3>James Pitts</h3>
+                <p>
+                    I was an engineer in Washington DC when an account manager brought this opportunity to me and I just decided to casually invest 
+                    $500 but my story today is on a premium plan.
+                </p>
+            </div>
+            <div class="experience box">
+                <img src="imgs/black.jpg" alt="" width="160px" height="160px">
+                <h3>Maria Sanchez</h3>
+                <p>
+                    I have only been a member for a few months and I have already earned a decent amount of money. Finally a real and honest company that does what it says. 
+                    Thank you so much for this great opportunity!
+                </p>
+            </div>
+        </div>
+    </div>
+    </div>
+<br>
+    <div class="trustedcont">
+        <div class="trusted">
+            <h2 style="font-size: 27.36px;">Trusted for more than 7 years.</h2>
+            <p>
+                BullionFX operates as an international digital investment management platform. 
+                Our Company offers access to multiple, automated, algorithm driven financial services, 
+                investment solutions, diversified alternative investments, portfolio management, financial planning, and advisory services.
+            </p>
+            <p>
+                BullionFX began as an early investor in today’s most recognizable 
+                alternative investment funds, creating and managing several investment funds catering to offshore high net worth investors. Sovereign pioneered the distinctive vision to create an 
+                institutional solution to not only navigate, but also facilitate and simplify, the alternative investment journey.
+            </p>
+        </div>
+    </div>
+    <br>
+    <div class="featured">
+       <span>Featured on:</span>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="imgs/forbes.png" alt="">      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="imgs/cnbc.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="imgs/theguardian.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="imgs/bloomberg.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="imgs/reuters.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="imgs/marketwatch.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+    <br><br>
+    <div class="investwith">
+        <h2 style="text-align: center; font-size: 37.5px;">Invest with Confidence</h2>
+        <div class="become">
+            <div class="becomespan">
+                <img src="imgs/bullion.ico" alt="">
+                <span>Become A Member</span>
+                <p>Become a member of BullionFX by creating a free account.</p>
+            </div>
+            <div class="becomespan">
+                <img src="imgs/earn.png" alt="">
+                <span>Choose Your Plan</span>
+                <p>Select any of our unique financial earning plans that best works for you.</p>
+            </div>
+            <div class="becomespan">
+                <img src="imgs/dollar.png" alt="">
+                <span>Earn Passively</span>
+                <p>Earn passively and get paid immediately you request for a withdrawal.</p>
+            </div>
+        </div>
+        <br><br><br>
+        <div class="connect">
+            <div class="span">
+                Connect with over 450,000 investors in the world’s leading investment company
+            </div>
+            <div class="spanbutton">
+                <a href="signin.html"><button>Create an account</button></a>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="insidefooterleft">
+            <div class="company">
+                <div class="grouptitle">Company</div>
+                <ul>
+                    <li><a target="_blank" href="about.html">About Us</a></li>
+                    <li><a target="_blank" href="contact.html">Contact Us</a></li>
+                    <li><a target="_blank" href="investment.html">Investment Plans</a></li>
+                </ul>
+            </div>
+            <div class="community">
+                <div class="grouptitle">Services</div>
+                <ul>
+                    <li><a target="_blank" href="forex.html">Forex</a></li>
+                    <li><a target="_blank" href="gold.html">Gold</a></li>
+                    <li><a target="_blank" href="crypto.html">Cryptocurrency</a></li>
+                    <li><a target="_blank" href="stocks.html">Stocks & ETF's</a></li>
+                </ul>
+            </div>
+            <div class="contacts">
+                <div class="grouptitle">Policies</div>
+                <ul>
+                    <li><a href="" target="_blank">Business Enquiries</a></li>
+                    <li><a href="" target="_blank">Terms and conditions</a></li>
+                    <li><a href="privacypolicy.html" target="_blank">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="contacts">
+                <div class="grouptitle">Socials</div>
+                <ul>
+                    <li><a href="" target="_blank"><i class="fa fa-facebook"></i> Facebook</a></li>
+                    <li><a href="" target="_blank"><i class="fa fa-instagram"></i> Instagram</a></li>
+                    <li><a href="" target="_blank"><i class=" fa fa-twitter"></i> Twitter</a></li>
+                </ul>
+            </div>
+        </div>
+        
+    <div id="popup" class="popup">
+        <img src="imgs/uptrend.png" alt="Icon">
+        <div class="popup-text"></div>
+        <div class="popup-close" onclick="closePopup()">✖</div>
+    </div>
+
+    <script>
+        // Array of messages
+        const messages = [
+        "Antony from Columbus just earned $29,747 12 minutes ago.",
+            "John Doe from New York just deposited $5,000 5 minutes ago.",
+            "Jane Smith from Los Angeles just withdrew $2,000 3 minutes ago.",
+            "Alice Johnson from Chicago just earned $15,000 10 minutes ago.",
+            "Bob Williams from Houston just deposited $8,000 2 minutes ago.",
+            "Charlie Brown from Philadelphia just withdrew $10000 8 minutes ago.",
+            "Dave Wilson from Phoenix just earned $45,000 6 minutes ago.",
+            "Eva Davis from San Antonio just deposited $9,000 4 minutes ago.",
+            "Frank Miller from San Diego just withdrew $16,000 9 minutes ago.",
+            "Grace Lee from Dallas just earned $2500 7 minutes ago."
+        ];
+
+        // Function to show a random message
+        function showRandomMessage() {
+            const popupText = document.querySelector('.popup-text');
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            popupText.textContent = messages[randomIndex];
+        }
+
+        // Function to close the popup
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        // Show a random message every 10 seconds
+        setInterval(showRandomMessage, 10000);
+
+        // Show the first message immediately
+        showRandomMessage();
+    </script>
+        <div class="explanation">
+            <hr>
+            <p>
+                BullionFX has achieved a good long-term track 
+                 record of profit earning results and has beaten the odds of 0.9% - 10.8% and has also earned more but have a 
+                winning rate of above mentioned across their various investment plans over the last 4 years through dealing on diversified 
+                investment opportunities and services in the broad markets and assets. Before investing, consider your investment objectives, 
+                goals and BullionFX’s legal charges and management expenses. BullionFX is an internet-based services and are designed to assist 
+                clients in achieving discrete financial goals and targets from both Active, Passive and Residual income returns.
+                 They are intended to provide comprehensive tax advice and financial
+                 planning with respect to every aspect of a client's financial situation and can incorporate specific
+                 and distinct investments that clients hold elsewhere. BullionFX is available to everyone Globally.
+            </p>
+            <p>
+                Forex and CFDs are leveraged products and can result in losses that exceed your deposits. 
+                Please ensure you fully understand all of the risks. Contracts for Difference ("CFDs") are leveraged products and carry a significant risk of loss to your capital, as prices may move rapidly against you and you may be required to make further payments to keep any trades open. These products are not suitable for all clients, 
+                therefore please ensure you fully understand the risks and seek independent advice.
+            </p>
+            <br>
+            <p>Copyright © 2024 All rights reserved</p>
+            <br><br><br><br><br><br><br>
+        </div>
+    </footer>
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/144535098.js"></script>
+<!-- End of HubSpot Embed Code -->
+</body>
+
+</html>

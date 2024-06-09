@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdrawal Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .withdrawal-container {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #2563eb;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="withdrawal-container">
+    <h2 class="text-center">Withdraw</h2>
+    <form id="withdrawalForm">
+        <div class="form-group">
+            <label for="amount">Amount to Withdraw ($):</label>
+            <input type="number" class="form-control" id="amount" placeholder="Enter amount" required>
+        </div>
+        <div class="form-group">
+            <label for="fee">Withdrawal Fee (10%):</label>
+            <input type="text" class="form-control" id="fee" readonly>
+        </div>
+        <div class="form-group">
+            <label for="total">Total Amount to be Paid ($):</label>
+            <input type="text" class="form-control" id="total" readonly>
+        </div>
+        <button type="button" class="btn btn-primary btn-block" onclick="calculateFee()">Calculate Total</button>
+        <button type="submit" class="btn btn-primary btn-block">Proceed to Payment</button>
+    </form>
+</div>
+
+<script>
+    function calculateFee() {
+        var amount = document.getElementById('amount').value;
+        if (amount) {
+            var fee = amount * 0.1;
+            var total = parseFloat(amount) + parseFloat(fee);
+            document.getElementById('fee').value = fee.toFixed(2);
+            document.getElementById('total').value = total.toFixed(2);
+        } else {
+            alert("Please enter a valid amount.");
+        }
+    }
+
+    document.getElementById('withdrawalForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        // Redirect to another page (replace 'your-payment-page.html' with your actual page)
+        window.location.href = 'deposit2.html';
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit Confirmation - BullionFX</title>
+    <script src="confirmation2.js" defer></script>
+    <link rel="stylesheet" href="confirmation.css">
+    <link rel="shortcut icon" href="imgs/bullion.ico" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/a7cbe35a69.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+        body {
+            margin: 0;
+            font-family: "Jost";
+            background-image: url(imgs/3379230.jpg);
+            background-size: cover;
+            background-size: auto;
+            
+            color: white; /* White text color */
+        }
+
+        .cont {
+            width: 60%;
+            margin: auto;
+            color: white;
+            padding: 50px;
+            font-size: 24px;
+            background-color: #15202B; /* Blue box background */
+            border-radius: 12px; /* Rounded corners */
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .cont2 {
+            background-color: #1E90FF; /* Blue box background */
+            padding: 10px;
+            border-radius: 12px; /* Rounded corners */
+            display: inline-block; /* Display inline */
+        }
+
+        button,
+        input {
+            font-family: "Jost";
+            font-size: 18px; /* Increased font size */
+        }
+
+        #confirmation {
+            color: #006ECD;
+            text-align: center;
+            text-transform: capitalize;
+            font-weight: 900;
+            font-size: 30px;
+        }
+
+        #address {
+            font-weight: bolder;
+            text-decoration: underline;
+            width: 70%;
+            padding: 10px;
+            border-radius: 12px;
+            background-color: #1E90FF; /* Blue box background */
+        }
+
+        #copyButton {
+            padding: 10px;
+            font-size: 24px;
+            border: 2px solid #006ECD;
+            background-color: white;
+            color: #006ECD;
+            border-radius: 12px;
+        }
+
+        #copyButton:hover {
+            background-color: #006ECD;
+            color: white;
+            cursor: pointer;
+        }
+
+        #confirmButton {
+            padding: 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            border: 2px solid #006ECD;
+            background-color: white;
+            color: #006ECD;
+        }
+
+        #confirmButton:hover {
+            background-color: #006ECD;
+            color: white;
+            cursor: pointer;
+            margin: auto;
+            text-align: center;
+        }
+
+        input[type="file"]::file-selector-button {
+            padding: 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            border: 2px solid #006ECD;
+            background-color: white;
+            color: #006ECD;
+            font-family: "Jost";
+        }
+
+        input[type="file"]::file-selector-button:hover {
+            background-color: #006ECD;
+            color: white;
+            cursor: pointer;
+            margin: auto;
+            font-family: "Jost";
+        }
+
+        /* Extra small devices (phones, 600px and down) */
+        @media only screen and (max-width: 768px) {
+            #address {
+                width: 70%;
+                font-size: 15px;
+                font-weight: 500;
+                margin: auto;
+            }
+
+            .cont {
+                padding: 15px;
+                width: 90%;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cont">
+        <div id="confirmation"></div>
+        <p>Please send your payment to the following address:</p>
+        <div class="cont2">
+            <span id="address"></span>
+            <span><button id="copyButton"><i class="fas fa-copy"></i></button></span>
+        </div>
+        <br><br>
+        <span>Upload Proof Of Payment</span>
+        <center><input type="file" id="receiptFile" accept="image/*,application/pdf" name="receipt"></center>
+        <br><br>
+        <center><button id="confirmButton">Confirm and Upload Receipt</button></center>
+        <br><br>
+        <a href="input.html" style="color: white;">Continue to withdrawal</a>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var paymentMethod = localStorage.getItem("paymentMethod");
+            var addressElement = document.getElementById("address");
+
+            // Define addresses for each payment method
+            var bitcoinAddress = "1N4wen6Nk9yhmrueWSZXUePgCYbb7FtQhe";
+            var ethereumAddress = "0xDFae0489Ec711593e429E5f6677D30B38784f299";
+            var usdtAddress = "TPSEjSZksyBrVy3vo4Q5kggKudGu1JCWqH";
+
+            // Display address based on payment method
+            if (paymentMethod === "Bitcoin") {
+                addressElement.textContent = bitcoinAddress;
+            } else if (paymentMethod === "Ethereum") {
+                addressElement.textContent = ethereumAddress;
+            } else if (paymentMethod === "USDT") {
+                addressElement.textContent = usdtAddress;
+            }
+
+            // Add event listener to copy button
+            document.getElementById("copyButton").addEventListener("click", function () {
+                var addressText = addressElement.textContent;
+                navigator.clipboard.writeText(addressText);
+                alert("Address copied to clipboard!");
+            });
+
+            // Add event listener to confirm button
+            document.getElementById("confirmButton").addEventListener("click", function () {
+                var receiptFile = document.getElementById("receiptFile").files[0];
+                if (!receiptFile) {
+                    alert("Please select a receipt file.");
+                    return;
+                }
+
+                // Create FormData object
+                var formData = new FormData();
+                formData.append("receipt", receiptFile);
+
+                // Send receipt to Formspree
+                fetch("https://formspree.io/f/mjvnanwg", {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        "Accept": "application/json"
+                    }
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        alert("Receipt sent successfully!");
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                        alert("An error occurred while sending the receipt.");
+                    });
+            });
+        });
+    </script>
+</body>
+</html>

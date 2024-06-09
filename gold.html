@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold - BullionFX</title>
+    <link rel="stylesheet" href="crypto.css">
+    <link rel="shortcut icon" href="imgs/bullion.ico" type="image/x-icon">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+        .popup {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #ffffff;
+            color: #000000;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 14px;
+            width: 300px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0;
+    transform: translateX(-100%);
+    animation: slideInOut 8s ease-in-out infinite;
+
+        }
+    
+        @keyframes slideInOut {
+    0%, 100% { 
+        opacity: 0; 
+        transform: translateX(-100%); 
+    }
+    10%, 90% { 
+        opacity: 1; 
+        transform: translateX(0); 
+    }
+}
+
+        .popup img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .popup-text {
+            flex: 1;
+        }
+
+        .popup-close {
+            cursor: pointer;
+            font-size: 18px;
+            line-height: 18px;
+            color: #999;
+        }
+
+        .popup-close:hover {
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <img src="imgs/bullion2.png" alt="" width="150px">
+        <div class="headlinks">
+            <a href="index.html">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="about.html">About Us</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="dropdown">
+                <button class="dropbtn">Services <i class="fa fa-caret-down"></i></button>
+                <div class="dropdowncontent">
+                    <a href="forex.html">Forex</a>
+                    <a href="crypto.html">Cryptocurrency</a>
+                    <a href="stocks.html">Stocks</a>
+                    <a href="gold.html">Gold</a>
+                </div>
+            </div>
+            <a href="investment.html">Investment Plans</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="contact.html">Contact</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <div class="buttonlog">
+            <a href="login.html"><button class="login">Login</button></a> 
+             <a href="signin.html"><button class="signup">Sign Up</button></a>
+         </div>
+
+
+         <div id="myNav" class="overlay">
+
+            <!-- Button to close the overlay navigation -->
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+          
+            <!-- Overlay content -->
+            <div class="overlay-content">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="investment.html">Investment Plans</a>
+                <a href="contact.html">Contact</a>
+                <button class="dropdown-btn2">Services
+                    <i class="fa fa-caret-down"></i>
+                  </button>
+                  <div class="dropdown-container2">
+                    <a href="forex.html">Forex</a>
+                    <a href="crypto.html">Cryptocurrency</a>
+                    <a href="stocks.html">Stocks</a>
+                    <a href="gold.html">Gold</a>
+                  </div>
+                  <a href="login.html">Login</a>
+                  <a href="signin.html">Sign Up</a>
+                <script>//* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+                    var dropdown = document.getElementsByClassName("dropdown-btn2");
+                    var i;
+                    
+                    for (i = 0; i < dropdown.length; i++) {
+                      dropdown[i].addEventListener("click", function() {
+                        this.classList.toggle("active");
+                        var dropdownContent = this.nextElementSibling;
+                        if (dropdownContent.style.display === "block") {
+                          dropdownContent.style.display = "none";
+                        } else {
+                          dropdownContent.style.display = "block";
+                        }
+                      });
+                    }
+                    </script>
+                  
+            </div>
+          
+    <div id="popup" class="popup">
+        <img src="imgs/uptrend.png" alt="Icon">
+        <div class="popup-text"></div>
+        <div class="popup-close" onclick="closePopup()">✖</div>
+    </div>
+
+    <script>
+        // Array of messages
+        const messages = [
+        "Antony from Columbus just earned $29,747 12 minutes ago.",
+            "John Doe from New York just deposited $5,000 5 minutes ago.",
+            "Jane Smith from Los Angeles just withdrew $2,000 3 minutes ago.",
+            "Alice Johnson from Chicago just earned $15,000 10 minutes ago.",
+            "Bob Williams from Houston just deposited $8,000 2 minutes ago.",
+            "Charlie Brown from Philadelphia just withdrew $10000 8 minutes ago.",
+            "Dave Wilson from Phoenix just earned $45,000 6 minutes ago.",
+            "Eva Davis from San Antonio just deposited $9,000 4 minutes ago.",
+            "Frank Miller from San Diego just withdrew $16,000 9 minutes ago.",
+            "Grace Lee from Dallas just earned $2500 7 minutes ago."
+        ];
+
+        // Function to show a random message
+        function showRandomMessage() {
+            const popupText = document.querySelector('.popup-text');
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            popupText.textContent = messages[randomIndex];
+        }
+
+        // Function to close the popup
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        // Show a random message every 10 seconds
+        setInterval(showRandomMessage, 10000);
+
+        // Show the first message immediately
+        showRandomMessage();
+    </script>
+          </div>
+          
+          <!-- Use any element to open/show the overlay navigation menu -->
+          <span onclick="openNav()" class="none"><i class="fa fa-bars" style="color: white;"></i></span>
+          <script>
+            function openNav() {
+  document.getElementById("myNav").style.width = "100%";
+}
+
+/* Close when someone clicks on the "x" symbol inside the overlay */
+function closeNav() {
+  document.getElementById("myNav").style.width = "0%";
+}
+          </script>
+    </nav>
+    <br>
+    <div class="videoback">
+        <video src="imgs/gold.mp4" autoplay muted loop></video>
+        <div class="videobacktext2">
+            <h2>Gold</h2>
+            <span>Seize the <span style="color: goldenrod;">golden</span> oppotunity to trade with confidence.</span><br>
+            <span>Invest Smart, Grow Fast.</span>
+    
+        </div>
+    </div>
+    <div class="brightfuture">
+        <h2 style="font-size: 13.5px; letter-spacing: 2px; text-transform: uppercase; font-weight: 300;">About Gold</h2>
+        <h2 style="font-size: 37.5px; font-weight: bolder; text-transform: capitalize;">Discover the Timeless Allure of <span style="color: goldenrod;">Gold</span> with BullionFX</h2>
+
+        <div class="aboutustext">
+            <p style="font-size: 22px">
+                Elevate your trading experience and secure your future with our premium selection of gold products. Whether you're a seasoned investor or just starting out, trust us to deliver excellence and reliability every step of the way. Explore our gold offerings now and let your wealth shine brighter with us.
+            </p>
+            <p style="font-size: 22px;">
+                Join us today and embark on a path to wealth creation and financial freedom!
+            </p>
+        </div>
+        <div class="aboutuspic2">
+            <video src="imgs/gold2.mp4" width="90%" autoplay muted loop></video>
+        </div>
+    </div>
+    <div class="companyvalue">
+        <h2 style="font-size: 13.5px; letter-spacing: 2px; text-transform: uppercase; font-weight: 250;">Company Value</h2>
+        <h2 style="font-size: 37.5px; font-weight: bolder; text-transform: capitalize;">It's all about Your Finances</h2>
+        <span style="font-size: 20px;">We focus on comprehensive financial advice and investment services</span>
+        <br><br>
+        <div class="datacontainer">
+            <div class="data box">
+                <img src="imgs/dataimg.png" alt="" width="60px">
+                <h3>Data</h3>
+                <p>
+                    All BullionFX’s technology are managed by our own trade technicians. 
+                    Proprietary analytics models provide visibility of top-performing strategies. AUTOTRACK™ is a market leading database of alternative investments asset hedge 
+                    fund performance and buy-side market intelligence. Better data leads to smarter investment decisions.
+                </p>
+            </div>
+            <div class="access box">
+                <img src="imgs/accessimg.png" alt="" width="60px">
+                <h3>Access</h3>
+                <p>
+                    Exceptional connectivity throughout the blockchain and digital assets ecosystem. 
+                    BullionFX's-Vision Hill has a proven history of accessing hard-to-reach or capacity-constrained opportunities and, in some cases,
+                     has been able to negotiate favorable investment terms, improved liquidity, or reduced fees.
+                </p>
+            </div>
+            <div class="experience box">
+                <img src="imgs/experienceimg.png" alt="" width="60px">
+                <h3>Experience</h3>
+                <p>
+                    Extensive understanding across portfolio and risk management, due diligence, and valuation. 
+                    5+ year track record of investing in high quality digital asset market strategies.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="trustedcont">
+        <div class="trusted">
+            <h2 style="font-size: 27.36px;">Trusted for more than 7 years.</h2>
+            <p>
+                BullionFX operates as an international digital investment management platform. 
+                Our Company offers access to multiple, automated, algorithm driven financial services, 
+                investment solutions, diversified alternative investments, portfolio management, financial planning, and advisory services.
+            </p>
+            <p>
+                BullionFX began as an early investor in today’s most recognizable 
+                alternative investment funds, creating and managing several investment funds catering to offshore high net worth investors. Sovereign pioneered the distinctive vision to create an 
+                institutional solution to not only navigate, but also facilitate and simplify, the alternative investment journey.
+            </p>
+        </div>
+    </div>
+    <div class="connectcont">
+        <div class="connect">
+            <div class="span">
+                Connect with over 450,000 investors in the world’s leading investment company
+            </div>
+            <div class="spanbutton">
+                <a href="signin.html"><button>Create an account</button></a>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="insidefooterleft">
+            <div class="company">
+                <div class="grouptitle">Company</div>
+                <ul>
+                    <li><a target="_blank" href="about.html">About Us</a></li>
+                    <li><a target="_blank" href="contact.html">Contact Us</a></li>
+                    <li><a target="_blank" href="investment.html">Investment Plans</a></li>
+                </ul>
+            </div>
+            <div class="community">
+                <div class="grouptitle">Services</div>
+                <ul>
+                    <li><a target="_blank" href="forex.html">Forex</a></li>
+                    <li><a target="_blank" href="gold.html">Gold</a></li>
+                    <li><a target="_blank" href="crypto.html">Cryptocurrency</a></li>
+                    <li><a target="_blank" href="stocks.html">Stocks & ETF's</a></li>
+                </ul>
+            </div>
+            <div class="contacts">
+                <div class="grouptitle">Policies</div>
+                <ul>
+                    <li><a href="" target="_blank">Business Enquiries</a></li>
+                    <li><a href="" target="_blank">Terms and conditions</a></li>
+                    <li><a href="privacypolicy.html" target="_blank">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="contacts">
+                <div class="grouptitle">Socials</div>
+                <ul>
+                    <li><a href="" target="_blank"><i class="fa fa-facebook"></i> Facebook</a></li>
+                    <li><a href="" target="_blank"><i class="fa fa-instagram"></i> Instagram</a></li>
+                    <li><a href="" target="_blank"><i class=" fa fa-twitter"></i> Twitter</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <hr>
+            <p>
+                BullionFX has achieved a good long-term track 
+                 record of profit earning results and has beaten the odds of 0.9% - 10.8% and has also earned more but have a 
+                winning rate of above mentioned across their various investment plans over the last 4 years through dealing on diversified 
+                investment opportunities and services in the broad markets and assets. Before investing, consider your investment objectives, 
+                goals and BullionFX’s legal charges and management expenses. BullionFX is an internet-based services and are designed to assist 
+                clients in achieving discrete financial goals and targets from both Active, Passive and Residual income returns.
+                 They are intended to provide comprehensive tax advice and financial
+                 planning with respect to every aspect of a client's financial situation and can incorporate specific
+                 and distinct investments that clients hold elsewhere. BullionFX is available to everyone Globally.
+            </p>
+            <p>
+                Forex and CFDs are leveraged products and can result in losses that exceed your deposits. 
+                Please ensure you fully understand all of the risks. Contracts for Difference ("CFDs") are leveraged products and carry a significant risk of loss to your capital, as prices may move rapidly against you and you may be required to make further payments to keep any trades open. These products are not suitable for all clients, 
+                therefore please ensure you fully understand the risks and seek independent advice.
+            </p>
+            <br>
+            <p>Copyright © 2024 All rights reserved</p>
+            <br><br><br><br><br><br><br>
+        </div>
+    </footer>
+    <!-- Start of HubSpot Embed Code -->
+  <script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/144535098.js"></script>
+  <!-- End of HubSpot Embed Code -->
+</body>
+</html>
