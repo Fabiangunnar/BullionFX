@@ -508,7 +508,8 @@
           const response = await res.json();
           if (response.success) {
             localStorage.setItem("user", JSON.stringify(response.data));
-            window.location.href = "/WORk/BullionFX/dashboard.html";
+            // window.location.href = "/WORk/BullionFX/dashboard.html";
+            window.location.replace("/dashboard.html");
           }
           console.log("response:", response);
         } catch (error) {

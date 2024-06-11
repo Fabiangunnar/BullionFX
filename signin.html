@@ -713,8 +713,16 @@
             }
           );
           const response = await res.json();
+          console.log(13424355);
+
           if (response.success) {
             localStorage.setItem("user", JSON.stringify(response.data));
+            window.location.replace("/dashboard.html");
+            console.log(111199809);
+          }
+
+          if (!response.success) {
+            alert(response.message);
           }
 
           console.log("response:", response);
